@@ -50,9 +50,6 @@ class HousingDatasets():
     def load_case_shiller(self):
         return self.load_stlouisfed_data("CSUSHPINSA")
 
-    def load_housing_affordability(self):
-        return self.load_stlouisfed_data("FIXHAI")
-
     def load_avg_mortgage_rates(self):
         return self.load_stlouisfed_data("MORTGAGE30US")
 
