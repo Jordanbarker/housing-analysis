@@ -9,7 +9,7 @@ class HousingDatasets():
 
     def load_recessions(self):
         """List of US Recessions gathered from Wikipedia"""
-        path = self.path_folder + 'List_of_recessions_in_the_United_States.xlsx'
+        path = self.path_folder + 'US_recessions.xlsx'
         recessions = pd.read_excel(path)
         recessions['Start'] = pd.to_datetime(recessions['Start'])
         recessions['End'] = pd.to_datetime(recessions['End'])
