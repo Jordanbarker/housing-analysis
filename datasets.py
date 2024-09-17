@@ -1,5 +1,7 @@
 import pandas as pd 
 
+# class NewYorkFed():
+
 class HousingDatasets():
     
     def __init__(self):
@@ -17,6 +19,9 @@ class HousingDatasets():
     ######################################
     # stlouisfed data functions
     ######################################
+
+    def load_treasury_spread(self):
+        return self.load_stlouisfed_data("T10Y3M")
 
     def load_active_listings(self):
         return self.load_stlouisfed_data("ACTLISCOUUS")
@@ -63,6 +68,18 @@ class HousingDatasets():
     ######################################
 
     def load_loan_report(self):
+        '''
+        Total Debt Balance and Its Composition
+        Value is in Trillions of $
+        returns df, title, value_label
+        '''
+        return self.load_newyorkfed_data(sheet_name='Page 3 Data', header=3) 
+
+    def load_loan_report_by_num_accounts(self):
+        '''
+        Number of Accounts by Loan Type
+        Value is in Millions of accounts
+        '''
         return self.load_newyorkfed_data(sheet_name='Page 4 Data', header=3)
 
     def load_mortgage_credit_scores(self):
@@ -109,6 +126,17 @@ class HousingDatasets():
     
     def load_newyorkfed_data(self, sheet_name, header):
         path = self.path_folder + 'newyorkfed_household_debit_and_credit_report.xlsx'
-        df = pd.read_excel(path, sheet_name=sheet_name, header=header)
+        # df = pd.read_excel(path, sheet_name=sheet_name, header=0)
+        header_df = pd.read_excel(
+            path, 
+            sheet_name=sheet_name, 
+            header=0,
+            nrows=2
+        )
+        title = header_df.columns[0]
+        value_label = header_df.iloc[0, 0]
+        if '*' in title:
+            title += f'({header_df.iloc[1, 0]})'
+        df = pd.read_excel(path, sheet_name=sheet_name, header=header) 
         df = self.prep_newyorkfed_data(df)
-        return df
+        return df, title, value_label 
