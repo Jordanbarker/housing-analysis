@@ -17,7 +17,7 @@ class HousingDatasets():
     
 
     ######################################
-    # stlouisfed data functions
+    # stlouisfed (FRED) data functions
     ######################################
 
     def load_treasury_spread(self):
@@ -55,7 +55,7 @@ class HousingDatasets():
 
     def load_stlouisfed_data(self, file_name):
         ''' Generic loader for St Louis Fed data since they all share similar attributes'''
-        df = pd.read_csv(f'{self.path_folder}{file_name}.csv')
+        df = pd.read_csv(f'{self.path_folder}FRED/{file_name}.csv')
         df.rename(columns={f"{file_name}":'value', "DATE":'date'}, inplace=True)
         df['date'] = df['date'].astype('datetime64[us]')
         return df
