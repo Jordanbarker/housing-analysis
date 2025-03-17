@@ -1,11 +1,9 @@
 import pandas as pd 
 
-# class NewYorkFed():
-
-class HousingDatasets():
+class Datasets():
     
     def __init__(self):
-        self.path_folder = 'data/'
+        self.path_folder = '../data/'
 
     def load_recessions(self):
         """List of US Recessions gathered from Wikipedia"""
@@ -122,7 +120,8 @@ class HousingDatasets():
         return self.drop_unnamed_columns(df)
     
     def load_newyorkfed_data(self, sheet_name, header):
-        path = self.path_folder + 'newyorkfed_household_debit_and_credit_report.xlsx'
+        # path = self.path_folder + 'newyorkfed_household_debit_and_credit_report.xlsx'
+        path = self.path_folder + 'HHD_C_Report_2024Q4.xlsx'
         # df = pd.read_excel(path, sheet_name=sheet_name, header=0)
         header_df = pd.read_excel(
             path, 
