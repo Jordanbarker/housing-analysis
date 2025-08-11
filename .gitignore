@@ -1,4 +1,6 @@
 .env
+.venv
+.pytest_cache
 .DS_Store
 /housing_analysis/__pycache__
 /housing_analysis.egg-info

@@ -17,13 +17,23 @@ dependencies = [
     "numpy",
     "pandas",
     "seaborn",
-    "matplotlib", 
-    "scipy", 
+    "matplotlib",
+    "scipy",
     "scikit-learn",
     "statsmodels",
-    "openpyxl"
+    "openpyxl",
+    "python-dotenv>=1.1.1",
+    "requests>=2.32.4",
+    "pyarrow>=21.0.0",
+    "jupyter>=1.1.1",
+    "nbconvert>=7.16.6",
 ]
 requires-python = ">=3.9"
 
 [tool.setuptools]
 packages = ["housing_analysis"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.4.1",
+]
